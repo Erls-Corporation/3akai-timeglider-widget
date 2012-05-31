@@ -1,0 +1,26 @@
+{
+    "id":                 "timeglider",
+    "name":               "Timeglider",
+    "description":        "Timeline Tool",
+    "type":               "contrib",
+    "enabled":            true,
+    "hasSettings":        true,
+    "url":                "/devwidgets/timeglider/timeglider.html",
+    "i18n": {
+        "default": {
+            "bundle":        "/devwidgets/timeglider/bundles/default.properties",
+            "name":           "Timeglider",
+            "description":    "Timegline Tool"
+        },
+        "nl_NL": {
+            "bundle":        "/devwidgets/timeglider/bundles/nl_NL.properties"
+        }
+    },
+    "personalportal":     true,
+    "sakaidocs":          true,
+    "showinsakaigoodies": true,
+    "groupdashboard":     false,
+    "grouppages":         false,
+    "userdashboard":      false,
+    "userpages":          false
+}

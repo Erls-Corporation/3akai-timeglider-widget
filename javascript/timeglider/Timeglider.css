@@ -191,7 +191,7 @@
 	font-size:11px;
 	background-color:#D3D3D3;
 	/* A line as bg doesn't alter the width of the div!*/
-	background-image:url("img/dotted.png");
+	background-image:url("/devwidgets/timeglider/images/img/dotted.png");
 	background-repeat:no-repeat;
 	border-top:1px solid #FFF;
 	overflow:hidden;
@@ -230,7 +230,7 @@
  border-left:1px solid #777;
  font-size:9px;
  margin:0;
- background-image:url("img/subtick_highlight.png");
+ background-image:url("/devwidgets/timeglider/images/img/subtick_highlight.png");
  background-repeat:no-repeat;
 }
 
@@ -299,7 +299,7 @@
 	cursor:pointer;
 	width:30px;
 	height:30px;
-	background-image:url(buttons/close.png);
+	background-image:url(/devwidgets/timeglider/images/buttons/close.png);
 	position:absolute;
 	top:-16px;
 	right:-16px;
@@ -311,7 +311,7 @@
 
 	width:15px;
 	height:15px;
-	background-image:url(buttons/close_small.png);
+	background-image:url(/devwidgets/timeglider/images/buttons/close_small.png);
 	margin-top:-8px;
 	margin-right:-7px;
 }
@@ -454,13 +454,13 @@
 
 .timeglider-filter-bt {
 	margin-right:6px;
-	background-image:url(buttons/filter.png);
+	background-image:url(/devwidgets/timeglider/images/buttons/filter.png);
 }
 .timeglider-list-bt {
-	background-image:url(buttons/list.png);
+	background-image:url(/devwidgets/timeglider/images/buttons/list.png);
 }
 .timeglider-settings-bt {
- 	background-image:url(buttons/tools.png);
+ 	background-image:url(/devwidgets/timeglider/images/buttons/tools.png);
 }
 
 /* MENU MODALS */
@@ -500,14 +500,14 @@
 	margin-top:-16px;
 	width:30px;
 	height:30px;
-	background-image:url(buttons/close.png);
+	background-image:url(/devwidgets/timeglider/images/buttons/close.png);
 }
 	
 
 .timeglider-menu-modal-point-right {
     width:20px;
     height:20px;
-    background-image:url("img/menu-pointer-right.png");
+    background-image:url("/devwidgets/timeglider/images/img/menu-pointer-right.png");
     background-repeat:no-repeat;
     position:absolute;
     bottom:-20px;
@@ -537,11 +537,11 @@
     cursor:pointer;
 }
 .timeglider-pan-left {
-  background-image:url("buttons/pan_left.png");
+  background-image:url("/devwidgets/timeglider/images/buttons/pan_left.png");
   margin-right:1px;
 }
 .timeglider-pan-right {
-  background-image:url("buttons/pan_right.png");
+  background-image:url("/devwidgets/timeglider/images/buttons/pan_right.png");
 }
 /* add hover effects? */
 
@@ -551,7 +551,7 @@
     float:left;
     width:162px;
     height:20px;
-    background-image:url("img/timeglider.png");
+    background-image:url("/devwidgets/timeglider/images/img/timeglider.png");
     background-repeat:no-repeat;
     margin-top:4px;
     margin-left:12px;
@@ -560,7 +560,7 @@
 .timeglider-menu-modal-point-left {
     width:20px;
     height:20px;
-    background-image:url("img/menu-pointer-left.png");
+    background-image:url("/devwidgets/timeglider/images/img/menu-pointer-left.png");
     background-repeat:no-repeat;
     position:absolute;
     bottom:-20px;

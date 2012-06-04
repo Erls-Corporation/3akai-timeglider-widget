@@ -27,10 +27,10 @@
     width: 200;
 }
 
-/* widget icon (for widgets that may appear on a dashboard) 
+/* widget icon (for widgets that may appear on a dashboard)
    icons are usually around 18 x 18 pixels */
 .timeglider.s3d-widget .s3d-widget-titlebar .widget_title {
-    background: url('/devwidgets/timeglider/images/timeglider_icon.png') 
+    background: url('/devwidgets/timeglider/images/timeglider_icon.png')
         18px 18px no-repeat;
 }
 
@@ -39,9 +39,26 @@
     width: 690px;
 }
 
-.timeglider_file_url {
-    width: 300px;
+
+#timeglider_file_url {
+    width: 325px;
 }
+#timeglider_zoom_numbers {
+    float:left;
+    width:50px;
+    font-weight:bold;
+}
+
+#timeglider_placeholder {
+    height:3px;
+    width:500px;
+}
+
+#timeglider_zoom_range_slider {
+    width: 300px;
+    float: left;
+}
+
 /*
  * Main View CSS
  */

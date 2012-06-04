@@ -17,21 +17,21 @@
  */
 
 // load the master sakai object to access all Sakai OAE API methods
-require(['jquery', 'sakai/sakai.api.core', 
+require(['jquery', 'sakai/sakai.api.core',
         '/devwidgets/timeglider/javascript/timeglider-0.1.3.min.js',
-        '/devwidgets/timeglider/javascript/underscore-min.js', 
-        '/devwidgets/timeglider/javascript/backbone-min.js', 
-        '/devwidgets/timeglider/javascript/jquery.tmpl.js', 
-        '/devwidgets/timeglider/javascript/ba-debug.min.js', 
-        '/devwidgets/timeglider/javascript/ba-tinyPubSub.js', 
-        '/devwidgets/timeglider/javascript/jquery.mousewheel.min.js', 
-        '/devwidgets/timeglider/javascript/jquery.ui.ipad.js', 
-        '/devwidgets/timeglider/javascript/timeglider/TG_Date.js', 
-        '/devwidgets/timeglider/javascript/timeglider/TG_Org.js', 
-        '/devwidgets/timeglider/javascript/timeglider/TG_Timeline.js', 
-        '/devwidgets/timeglider/javascript/timeglider/TG_TimelineView.js', 
-        '/devwidgets/timeglider/javascript/timeglider/TG_Mediator.js', 
-        '/devwidgets/timeglider/javascript/timeglider/timeglider.timeline.widget.js', 
+        '/devwidgets/timeglider/javascript/underscore-min.js',
+        '/devwidgets/timeglider/javascript/backbone-min.js',
+        '/devwidgets/timeglider/javascript/jquery.tmpl.js',
+        '/devwidgets/timeglider/javascript/ba-debug.min.js',
+        '/devwidgets/timeglider/javascript/ba-tinyPubSub.js',
+        '/devwidgets/timeglider/javascript/jquery.mousewheel.min.js',
+        '/devwidgets/timeglider/javascript/jquery.ui.ipad.js',
+        '/devwidgets/timeglider/javascript/timeglider/TG_Date.js',
+        '/devwidgets/timeglider/javascript/timeglider/TG_Org.js',
+        '/devwidgets/timeglider/javascript/timeglider/TG_Timeline.js',
+        '/devwidgets/timeglider/javascript/timeglider/TG_TimelineView.js',
+        '/devwidgets/timeglider/javascript/timeglider/TG_Mediator.js',
+        '/devwidgets/timeglider/javascript/timeglider/timeglider.timeline.widget.js',
         '/devwidgets/timeglider/javascript/jquery-ui.js'], function($, sakai) {
     /**
      * @name sakai.timeglider
@@ -41,17 +41,20 @@ require(['jquery', 'sakai/sakai.api.core',
      * @description
      * timeglider is a widget that embeds a Timeline generated from a JSON file.
      * This is done by using the Timglider library
-     * 
+     *
      * @version 0.0.1
      * @param {String} tuid Unique id of the widget
      * @param {Boolean} showSettings Show the settings of the widget or not
      */
     sakai_global.timeglider = function(tuid, showSettings) {
-         
+
         /////////////////////////////
         // Configuration variables //
         /////////////////////////////
-        var DEFAULT_INPUT = '/devwidgets/timeglider/default_data.json';
+        var DEFAULT_URL = '/devwidgets/timeglider/default_data.json';
+        var DEFAULT_MIN_ZOOM = 20;
+        var DEFAULT_MAX_ZOOM = 50;
+
 
         // DOM jQuery Objects
         var $rootel = $('#' + tuid); //unique container for each widget instance
@@ -60,11 +63,13 @@ require(['jquery', 'sakai/sakai.api.core',
         var $settingsForm = $('#timeglider_settings_form', $rootel);
         var $cancelSettings = $('#timeglider_cancel_settings', $rootel);
         var $fileURL = $('#timeglider_file_url', $rootel);
+        var $zoomRange = $('#timeglider_zoom_range_slider', $rootel);
+        var $zoomNumbers = $('#timeglider_zoom_numbers', $rootel);
 
         ///////////////////////
         // Utility functions //
         ///////////////////////
-        
+
         /**
          * Checks if the provided profile or query is non-empty and returns it
          * if that is the case. If it is empty it returns the DEFAULT_INPUT
@@ -72,7 +77,7 @@ require(['jquery', 'sakai/sakai.api.core',
          * @param {String} fileURL The profile or query
          */
         var checkInput = function(fileURL) {
-            return (fileURL && $.trim(fileURL)) ? $.trim(fileURL) : DEFAULT_INPUT;
+            return (fileURL && $.trim(fileURL)) ? $.trim(fileURL) : DEFAULT_URL;
         };
 
 
@@ -87,10 +92,10 @@ require(['jquery', 'sakai/sakai.api.core',
             sakai.api.Widgets.loadWidgetData(tuid, function(success, data) {
                 if (success) {
                     // fetching the data succeeded, send it to the callback function
-                    callback(checkInput(data.fileURL));
+                    callback(checkInput(data.fileURL), data.minZoom, data.maxZoom);
                 } else {
                     // fetching the data failed, we use the DEFAULT_COLOR
-                    callback(DEFAULT_INPUT);
+                    callback(DEFAULT_URL, DEFAULT_MIN_ZOOM, DEFAULT_MAX_ZOOM);
                 }
             });
         };
@@ -102,20 +107,21 @@ require(['jquery', 'sakai/sakai.api.core',
         /**
          * Shows the Main view that contains the timeglider widget
          *
-         * @param {String} fileURL The profile name or query
-         * @param {String} widgetType Is it a profile or a search widget
+         * @param {String} fileURL The URL of the JSON file
          */
-         
-        var showMainView = function(fileURL) {
-            var tg1 = $mainContainer.timeline({
+
+        var showMainView = function(fileURL, minZoom, maxZoom) {
+            var widgetID = 'timeglider_actual_widget' + tuid;
+            $mainContainer.html('<div id="' + widgetID + '"></div>');
+            $mainContainer.timeline({
                 "data_source":fileURL,
-                "min_zoom":15,
-                "max_zoom":60,
+                "min_zoom":minZoom,
+                "max_zoom":maxZoom
             });
             $mainContainer.show();
-        
+
         }
-        
+
 
         /////////////////////////////
         // Settings View functions //
@@ -126,10 +132,22 @@ require(['jquery', 'sakai/sakai.api.core',
          *
          * @param {String} fileURL The profile or query string
          */
-        var renderSettings = function(fileURL) {
+        var renderSettings = function(fileURL, minZoom, maxZoom) {
             $fileURL.val(checkInput(fileURL));
+            //show slider
+            $zoomRange.slider({
+                range: true,
+                min:1,
+                max:100,
+                values:[minZoom, maxZoom],
+                slide:function(event, ui) {
+                    $zoomNumbers.html(ui.values[0] + ' - ' + ui.values[1]);
+                }
+            });
+            $zoomNumbers.html($zoomRange.slider( "values", 0 ) +
+                    ' - ' + $zoomRange.slider( "values", 1 ) );
         };
-            
+
 
         ////////////////////
         // Event Handlers //
@@ -138,10 +156,13 @@ require(['jquery', 'sakai/sakai.api.core',
         $settingsForm.on('submit', function(ev) {
             // get the selected input
             var fileURL = $fileURL.val();
-            
+            var minZoom = $zoomRange.slider('values', 0);
+            var maxZoom = $zoomRange.slider('values', 1);
             // save the selected input
             sakai.api.Widgets.saveWidgetData(tuid, {
-                fileURL: fileURL
+                fileURL: fileURL,
+                minZoom: minZoom,
+                maxZoom: maxZoom
             },
                 function(success, data) {
                     if (success) {
@@ -161,7 +182,7 @@ require(['jquery', 'sakai/sakai.api.core',
         /////////////////////////////
         // Initialization function //
         /////////////////////////////
-        
+
         /**
          * Initialization function DOCUMENTATION
          */

@@ -16,7 +16,6 @@
 "startdate": "1936-07-01 12:00:00",
 "high_threshold":50,
 "importance":"50",
-"image":"_js_history/alonzo_church.jpg",
 "link":"http://en.wikipedia.org/wiki/Lisp_(programming_language)",
 "modal_type":"full",
 "date_display":"ye",
@@ -79,7 +78,6 @@
 "importance":"60",
 "date_display":"ye",
 "modal_type":"full",
-"image":"_js_history/berners-lee.jpg",
 "icon":"flag_yellow.png"
 },
 
@@ -184,7 +182,6 @@
 "date_display":"ye",
 "high_threshold":50,
 "link":"http://en.wikipedia.org/wiki/Grace_Hopper",
-"image":"_js_history/grace_hopper.jpg",
 "icon":"circle_green.png"
 },
 
@@ -239,7 +236,6 @@
 "startdate": "1972-06-01 12:00:00",
 "importance":"55",
 "high_threshold":50,
-"image":"_js_history/ritchie_thompson.jpg",
 "date_display":"ye",
 "icon":"circle_green.png"
 },
@@ -351,7 +347,7 @@
 {
 "id":"jshist-java",
 "title": "Java",
-"description":"<img src='_js_history/gosling.jpg' style='float:left'>From Wikipedia:<br>Java was originally designed for interactive television, but it was too advanced for the digital cable television industry at the time. The language was initially called Oak after an oak tree that stood outside James Gosling's office; it went by the name Green later, and was later renamed Java, from Java coffee, said to be consumed in large quantities by the language's creators. Gosling aimed to implement a virtual machine and a language that had a familiar C/C++ style of notation.",
+"description":"From Wikipedia:<br>Java was originally designed for interactive television, but it was too advanced for the digital cable television industry at the time. The language was initially called Oak after an oak tree that stood outside James Gosling's office; it went by the name Green later, and was later renamed Java, from Java coffee, said to be consumed in large quantities by the language's creators. Gosling aimed to implement a virtual machine and a language that had a familiar C/C++ style of notation.",
 "startdate": "1991-06-15 12:00:00",
 "high_threshold":50,
 "importance":"50",
@@ -425,7 +421,6 @@
 "high_threshold":40,
 "importance":"40",
 "date_display":"da",
-"image":"_js_history/andreesen.jpg",
 "link":"http://en.wikipedia.org/wiki/Mosaic_%28web_browser%29",
 "icon":"circle_purple.png"
 },
@@ -562,7 +557,7 @@
 {
 "id":"jshist-livewire",
 "title": "Netscape LiveWire",
-"description":"<img src='_js_history/livewire_cover.jpg' style='float:left'>LiveWire was a first attempt by Netscape to create a super-framework that included their Java back-end and database connectivity and front-end scripting. This was ostensibly to go head-to-head with Microsoft's new ASP framework. But also, Javascript could be included in the compile-time file to interpret server-side data (a .web file), much like today's PHP. It is uncanny how similar their system was to the later Flash compiled-bytecode system. It was a complete flop.",
+"description":"LiveWire was a first attempt by Netscape to create a super-framework that included their Java back-end and database connectivity and front-end scripting. This was ostensibly to go head-to-head with Microsoft's new ASP framework. But also, Javascript could be included in the compile-time file to interpret server-side data (a .web file), much like today's PHP. It is uncanny how similar their system was to the later Flash compiled-bytecode system. It was a complete flop.",
 "startdate": "1997-06-01 12:00:00",
 "high_threshold":40,
 "importance":"35",
@@ -668,8 +663,7 @@
 "high_threshold":40,
 "importance":"55",
 "modal_type":"full",
-"icon":"triangle_green.png",
-"image":"_js_history/eich.gif"
+"icon":"triangle_green.png"
 },
 
 {
@@ -813,7 +807,6 @@
 "link":"http://www.adaptivepath.com/ideas/e000385",
 "high_threshold":40,
 "importance":"42",
-"image":"_js_history/garrett.jpg",
 "icon":"quote.png"
 },
 
@@ -939,7 +932,6 @@
 "startdate": "1996-06-01 12:00:00",
 "date_display":"mo",
 "link":"http://www.davidflanagan.com/",
-"image":"_js_history/flanagan.jpg",
 "high_threshold":40,
 "importance":"35",
 "icon":"triangle_green.png"
@@ -1011,7 +1003,7 @@
 "startdate": "2004-06-01 12:00:00",
 "enddate": "2004-06-01 12:00:00",
 "link":"http://dojotoolkit.org/",
-"image":"img/dojo.jpg",
+"image":"/devwidgets/timeglider/images/img/dojo.jpg",
 "image_class":"above",
 "high_threshold":40,
 "importance":"35",
@@ -1025,7 +1017,6 @@
 "enddate": "2002-07-01 12:00:00",
 "date_display":"mo",
 "link":"http://json.org",
-"image":"_js_history/crockford.jpg",
 "high_threshold":40,
 "importance":"45",
 "icon":"circle_orange.png"
@@ -1040,7 +1031,6 @@
 "link":"http://jquery.com/",
 "high_threshold":40,
 "importance":"45",
-"image":"_js_history/resig.jpg",
 "image_class":"above",
 "icon":"triangle_orange.png"
 },

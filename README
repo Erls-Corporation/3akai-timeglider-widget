@@ -4,3 +4,4 @@ It's free to use for non-commercial institutions.
 
 Known Bugs:
 Using multiple widgets causes problems.
+In Firefox the settings/remove widget bar gets moved in a way that you can not reach it anymore. It does work in Google Chrome.

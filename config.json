@@ -6,6 +6,7 @@
     "enabled":            true,
     "hasSettings":        true,
     "url":                "/devwidgets/timeglider/timeglider.html",
+    "img":                "/devwidgets/timeglider/images/timeglider.png",
     "i18n": {
         "default": {
             "bundle":        "/devwidgets/timeglider/bundles/default.properties",

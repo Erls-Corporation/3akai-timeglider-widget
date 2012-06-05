@@ -17,9 +17,8 @@
  */
 
 // load the master sakai object to access all Sakai OAE API methods
-require(['jquery', 'sakai/sakai.api.core',
+require(['jquery', 'sakai/sakai.api.core', 'underscore',
         '/devwidgets/timeglider/javascript/timeglider-0.1.3.min.js',
-        '/devwidgets/timeglider/javascript/underscore-min.js',
         '/devwidgets/timeglider/javascript/backbone-min.js',
         '/devwidgets/timeglider/javascript/jquery.tmpl.js',
         '/devwidgets/timeglider/javascript/ba-debug.min.js',
@@ -72,9 +71,9 @@ require(['jquery', 'sakai/sakai.api.core',
 
         /**
          * Checks if the provided profile or query is non-empty and returns it
-         * if that is the case. If it is empty it returns the DEFAULT_INPUT
+         * if that is the case. If it is empty it returns the DEFAULT_URL
          *
-         * @param {String} fileURL The profile or query
+         * @param {String} fileURL The JSON URL
          */
         var checkInput = function(fileURL) {
             return (fileURL && $.trim(fileURL)) ? $.trim(fileURL) : DEFAULT_URL;
@@ -82,7 +81,7 @@ require(['jquery', 'sakai/sakai.api.core',
 
 
         /**
-         * Gets the profile/query from the server using an asynchronous request
+         * Gets the data from the server using an asynchronous request
          *
          * @param {Object} callback Function to call when the request returns. This
          * function will be sent a String with the preferred profile or channel.
@@ -112,7 +111,6 @@ require(['jquery', 'sakai/sakai.api.core',
 
         var showMainView = function(fileURL, minZoom, maxZoom) {
             var widgetID = 'timeglider_actual_widget' + tuid;
-            $mainContainer.html('<div id="' + widgetID + '"></div>');
             $mainContainer.timeline({
                 "data_source":fileURL,
                 "min_zoom":minZoom,
@@ -195,9 +193,9 @@ require(['jquery', 'sakai/sakai.api.core',
                     getPreferredInput(showMainView);
             }
         };
-        $("head").append('<link id="timeglider_css' + tuid + '" rel="stylesheet" href="/devwidgets/timeglider/javascript/timeglider/Timeglider.css" type="text/css" media="screen" title="no title" charset="utf-8" />');
-        $("head").append('<link id="timeglider_jquery_css' + tuid + '" rel="stylesheet" href="/devwidgets/timeglider/css/aristo/jquery-ui-1.8.5.custom.css" type="text/css" media="screen" title="no title" charset="utf-8" />');
         // run the initialization function when the widget object loads
+            sakai.api.Util.include.css('/devwidgets/timeglider/javascript/timeglider/Timeglider.css');
+            sakai.api.Util.include.css('/devwidgets/timeglider/css/aristo/jquery-ui-1.8.5.custom.css');
         doInit();
     };
 

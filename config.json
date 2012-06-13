@@ -17,7 +17,7 @@
             "bundle":        "/devwidgets/timeglider/bundles/nl_NL.properties"
         }
     },
-    "personalportal":     true,
+    "personalportal":     false,
     "sakaidocs":          true,
     "showinsakaigoodies": true,
     "groupdashboard":     false,

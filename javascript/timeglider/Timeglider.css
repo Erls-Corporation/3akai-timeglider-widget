@@ -299,7 +299,7 @@
 	cursor:pointer;
 	width:30px;
 	height:30px;
-	background-image:url(buttons/close.png);
+	background-image:url(/devwidgets/timeglider/images/buttons/close.png);
 	position:absolute;
 	top:-16px;
 	right:-16px;
@@ -311,7 +311,7 @@
 
 	width:15px;
 	height:15px;
-	background-image:url(buttons/close_small.png);
+	background-image:url(/devwidgets/timeglider/images/buttons/close_small.png);
 	margin-top:-8px;
 	margin-right:-7px;
 }
@@ -454,13 +454,13 @@
 
 .timeglider-filter-bt {
 	margin-right:6px;
-	background-image:url(buttons/filter.png);
+	background-image:url(/devwidgets/timeglider/images/buttons/filter.png);
 }
 .timeglider-list-bt {
-	background-image:url(buttons/list.png);
+	background-image:url(/devwidgets/timeglider/images/buttons/list.png);
 }
 .timeglider-settings-bt {
- 	background-image:url(buttons/tools.png);
+ 	background-image:url(/devwidgets/timeglider/images/buttons/tools.png);
 }
 
 /* MENU MODALS */
@@ -501,7 +501,7 @@
 	margin-top:-16px;
 	width:30px;
 	height:30px;
-	background-image:url(buttons/close.png);
+	background-image:url(/devwidgets/timeglider/images/buttons/close.png);
 }
 
 
@@ -538,11 +538,11 @@
     cursor:pointer;
 }
 .timeglider-pan-left {
-  background-image:url("buttons/pan_left.png");
+  background-image:url("/devwidgets/timeglider/images/buttons/pan_left.png");
   margin-right:1px;
 }
 .timeglider-pan-right {
-  background-image:url("buttons/pan_right.png");
+  background-image:url("/devwidgets/timeglider/images/buttons/pan_right.png");
 }
 /* add hover effects? */
 

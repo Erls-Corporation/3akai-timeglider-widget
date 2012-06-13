@@ -18,7 +18,7 @@
 
 // load the master sakai object to access all Sakai OAE API methods
 require(['jquery', 'sakai/sakai.api.core', 'underscore',
-        '/devwidgets/timeglider/javascript/timeglider-0.1.3.min.js',
+        '/devwidgets/timeglider/javascript/timeglider-0.1.4.min.js',
         '/devwidgets/timeglider/javascript/backbone-min.js',
         '/devwidgets/timeglider/javascript/jquery.tmpl.js',
         '/devwidgets/timeglider/javascript/ba-debug.min.js',
@@ -31,7 +31,8 @@ require(['jquery', 'sakai/sakai.api.core', 'underscore',
         '/devwidgets/timeglider/javascript/timeglider/TG_TimelineView.js',
         '/devwidgets/timeglider/javascript/timeglider/TG_Mediator.js',
         '/devwidgets/timeglider/javascript/timeglider/timeglider.timeline.widget.js',
-        '/devwidgets/timeglider/javascript/jquery-ui.js'], function($, sakai) {
+        '/devwidgets/timeglider/javascript/jquery-ui.js'
+        ], function($, sakai) {
     /**
      * @name sakai.timeglider
      *
@@ -110,6 +111,7 @@ require(['jquery', 'sakai/sakai.api.core', 'underscore',
          */
 
         var showMainView = function(fileURL, minZoom, maxZoom) {
+
             var widgetID = 'timeglider_actual_widget' + tuid;
             $mainContainer.timeline({
                 "data_source":fileURL,
@@ -195,7 +197,7 @@ require(['jquery', 'sakai/sakai.api.core', 'underscore',
         };
         // run the initialization function when the widget object loads
             sakai.api.Util.include.css('/devwidgets/timeglider/javascript/timeglider/Timeglider.css');
-            sakai.api.Util.include.css('/devwidgets/timeglider/css/aristo/jquery-ui-1.8.5.custom.css');
+            sakai.api.Util.include.css('/devwidgets/timeglider/css/ui-lightness/jquery-ui-1.8.20.custom.css');
         doInit();
     };
 

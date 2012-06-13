@@ -169,7 +169,7 @@
 	-webkit-border-radius: 0px 0px 4px 4px;
 	border-radius: 0px 0px 4px 4px;
 	background-color:#555;
-	z-index:99;
+	z-index:100;
 }
 
 
@@ -292,14 +292,14 @@
 	/* For IE 5.5 - 7 */
 	filter: progid:DXImageTransform.Microsoft.Shadow(Strength=4, Direction=135, Color='#333333');
 	position:absolute;
-	z-index:99999999;
+	z-index:100;
 }
 
 .close-button-remove, .close-button-filter, .close-button-toggleMenu {
 	cursor:pointer;
 	width:30px;
 	height:30px;
-	background-image:url(/devwidgets/timeglider/images/buttons/close.png);
+	background-image:url(buttons/close.png);
 	position:absolute;
 	top:-16px;
 	right:-16px;
@@ -311,7 +311,7 @@
 
 	width:15px;
 	height:15px;
-	background-image:url(/devwidgets/timeglider/images/buttons/close_small.png);
+	background-image:url(buttons/close_small.png);
 	margin-top:-8px;
 	margin-right:-7px;
 }
@@ -338,7 +338,7 @@
 	padding:0px;
 	font-size:.9em;
 	cursor:pointer;
-	z-index:100;
+	z-index:80;
 }
 
 .timeglider-timeline-event:hover .timeglider-event-image-inline img {
@@ -352,7 +352,7 @@
   padding:3px 6px 3px 6px;
   min-width:50px;
   font-size:12px;
-  z-index:100;
+  z-index:80;
   -webkit-border-radius: 3px;
   -moz-border-radius: 3px;
   border-radius: 3px;
@@ -454,13 +454,13 @@
 
 .timeglider-filter-bt {
 	margin-right:6px;
-	background-image:url(/devwidgets/timeglider/images/buttons/filter.png);
+	background-image:url(buttons/filter.png);
 }
 .timeglider-list-bt {
-	background-image:url(/devwidgets/timeglider/images/buttons/list.png);
+	background-image:url(buttons/list.png);
 }
 .timeglider-settings-bt {
- 	background-image:url(/devwidgets/timeglider/images/buttons/tools.png);
+ 	background-image:url(buttons/tools.png);
 }
 
 /* MENU MODALS */
@@ -472,13 +472,14 @@
 	border-radius:6px;
 	-moz-border-radius:6px;
 	-webkit-border-radius:6px;
-	z-index:9999;
+	z-index:90;
 	padding:2px;
 
 	filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#555555', endColorstr='#000000'); /* for IE */
 	background: -webkit-gradient(linear, left top, left bottom, from(#555), to(#000)); /* for webkit browsers */
 	background: -moz-linear-gradient(top,  #555,  #000); /* for firefox 3.6+ */
 	background-repeat:no-repeat;
+
 }
 
 .timeglider-menu-modal  h3 {
@@ -500,7 +501,7 @@
 	margin-top:-16px;
 	width:30px;
 	height:30px;
-	background-image:url(/devwidgets/timeglider/images/buttons/close.png);
+	background-image:url(buttons/close.png);
 }
 
 
@@ -537,11 +538,11 @@
     cursor:pointer;
 }
 .timeglider-pan-left {
-  background-image:url("/devwidgets/timeglider/images/buttons/pan_left.png");
+  background-image:url("buttons/pan_left.png");
   margin-right:1px;
 }
 .timeglider-pan-right {
-  background-image:url("/devwidgets/timeglider/images/buttons/pan_right.png");
+  background-image:url("buttons/pan_right.png");
 }
 /* add hover effects? */
 
@@ -751,13 +752,24 @@
 	left:50px;
 }
 
+.tg-iframe-modal {
+	width:600px;
+	height:400px;
+}
+
+.tg-iframe-modal iframe {
+	width:100%;
+	height:350px;
+	border:none;
+}
+
 
 .timeglider-ev-modal p, .timeglider-timeline-modal p {
 	font-size:11px;
 	color:#555;
 	margin:8px;
-	max-height:400px;
-	overflow:hidden;
+	max-height:250px;
+	overflow-y:scroll;
 }
 
 .timeglider-ev-modal p img, .timeglider-timeline-modal p img{
@@ -1007,7 +1019,7 @@ ul.timeglider-ev-modal-links li a {
   visibility: visible;
   padding: 5px;
   font-size: 11px;
-  z-index: 1000;
+  z-index: 91;
   filter: alpha(opacity=80);
   -khtml-opacity: 0.8;
   -moz-opacity: 0.8;

@@ -23,7 +23,6 @@
 },
 
 
-
 {
 "id":"jshist-z3",
 "title": "Z3",
@@ -347,7 +346,7 @@
 {
 "id":"jshist-java",
 "title": "Java",
-"description":"From Wikipedia:<br>Java was originally designed for interactive television, but it was too advanced for the digital cable television industry at the time. The language was initially called Oak after an oak tree that stood outside James Gosling's office; it went by the name Green later, and was later renamed Java, from Java coffee, said to be consumed in large quantities by the language's creators. Gosling aimed to implement a virtual machine and a language that had a familiar C/C++ style of notation.",
+"description":"<img src='_js_history/gosling.jpg' style='float:left'>From Wikipedia:<br>Java was originally designed for interactive television, but it was too advanced for the digital cable television industry at the time. The language was initially called Oak after an oak tree that stood outside James Gosling's office; it went by the name Green later, and was later renamed Java, from Java coffee, said to be consumed in large quantities by the language's creators. Gosling aimed to implement a virtual machine and a language that had a familiar C/C++ style of notation.",
 "startdate": "1991-06-15 12:00:00",
 "high_threshold":50,
 "importance":"50",
@@ -519,7 +518,6 @@
 "high_threshold":40,
 "importance":"30",
 "link":"http://en.wikipedia.org/wiki/MochiKit",
-"image_class":"above",
 "icon":"triangle_orange.png"
 },
 
@@ -535,7 +533,6 @@
 "high_threshold":40,
 "importance":"30",
 "link":"http://en.wikipedia.org/wiki/qooxdoo",
-"image_class":"above",
 "icon":"triangle_orange.png"
 },
 
@@ -549,7 +546,6 @@
 "startdate": "2005-06-01 12:00:00",
 "high_threshold":40,
 "importance":"30",
-"image_class":"above",
 "icon":"triangle_orange.png"
 },
 
@@ -557,12 +553,11 @@
 {
 "id":"jshist-livewire",
 "title": "Netscape LiveWire",
-"description":"LiveWire was a first attempt by Netscape to create a super-framework that included their Java back-end and database connectivity and front-end scripting. This was ostensibly to go head-to-head with Microsoft's new ASP framework. But also, Javascript could be included in the compile-time file to interpret server-side data (a .web file), much like today's PHP. It is uncanny how similar their system was to the later Flash compiled-bytecode system. It was a complete flop.",
+"description":"<img src='_js_history/livewire_cover.jpg' style='float:left'>LiveWire was a first attempt by Netscape to create a super-framework that included their Java back-end and database connectivity and front-end scripting. This was ostensibly to go head-to-head with Microsoft's new ASP framework. But also, Javascript could be included in the compile-time file to interpret server-side data (a .web file), much like today's PHP. It is uncanny how similar their system was to the later Flash compiled-bytecode system. It was a complete flop.",
 "startdate": "1997-06-01 12:00:00",
 "high_threshold":40,
 "importance":"35",
 "modal_type":"full",
-"image_class":"above",
 "icon":"square_orange.png"
 },
 
@@ -1003,8 +998,6 @@
 "startdate": "2004-06-01 12:00:00",
 "enddate": "2004-06-01 12:00:00",
 "link":"http://dojotoolkit.org/",
-"image":"/devwidgets/timeglider/images/img/dojo.jpg",
-"image_class":"above",
 "high_threshold":40,
 "importance":"35",
 "icon":"triangle_orange.png"
@@ -1031,7 +1024,6 @@
 "link":"http://jquery.com/",
 "high_threshold":40,
 "importance":"45",
-"image_class":"above",
 "icon":"triangle_orange.png"
 },
 
@@ -1254,7 +1246,7 @@
 "importance":"40",
 "icon":"circle_blue.png",
 "map":{
-	"label":"JSConf 2010", 
+	"label":"JSConf 2010",
 	"latlong":"38.8969007, -77.0724308",
 	"markers":[
 		{
@@ -1280,7 +1272,7 @@
 "icon":"circle_blue.png",
 "tags":"conference,arizona,chris",
 "map":{
-	"label":"JSConf 2011", 
+	"label":"JSConf 2011",
 	"latlong":"45.51655690309638,-122.68299579620361",
 	"markers":[
 		{
@@ -1332,6 +1324,6 @@
    {"title":"conferences", "icon":"circle_blue.png"},
    {"title":"milestones", "icon":"circle_purple.png"}
 ]
-         
+
 }
 ]

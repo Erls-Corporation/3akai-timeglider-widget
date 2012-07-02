@@ -175,7 +175,7 @@ require(['jquery', 'sakai/sakai.api.core', 'underscore',
         });
 
         $cancelSettings.on('click', function() {
-            sakai.api.Widgets.Container.informFinish(tuid, 'timeglider');
+            sakai.api.Widgets.Container.informCancel(tuid, 'timeglider');
         });
 
 

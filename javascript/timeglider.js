@@ -31,7 +31,8 @@ require(['jquery', 'sakai/sakai.api.core', 'underscore',
         '/devwidgets/timeglider/javascript/timeglider/TG_TimelineView.js',
         '/devwidgets/timeglider/javascript/timeglider/TG_Mediator.js',
         '/devwidgets/timeglider/javascript/timeglider/timeglider.timeline.widget.js',
-        '/devwidgets/timeglider/javascript/jquery-ui.js'
+        '/devwidgets/timeglider/javascript/jquery-ui.js',
+        'jquery-plugins/jquery.fileupload', 'jquery-plugins/jquery.MultiFile.sakai-edited'
         ], function($, sakai) {
     /**
      * @name sakai.timeglider
@@ -65,6 +66,12 @@ require(['jquery', 'sakai/sakai.api.core', 'underscore',
         var $fileURL = $('#timeglider_file_url', $rootel);
         var $zoomRange = $('#timeglider_zoom_range_slider', $rootel);
         var $zoomNumbers = $('#timeglider_zoom_numbers', $rootel);
+        var $uploadForm = $('#timeglider_upload_form', $rootel);
+        var $uploadButton = $('#timeglider_upload_btn', $rootel);
+
+        //Paths
+        var uploadPath = '/system/pool/createfile';
+
 
         ///////////////////////
         // Utility functions //
@@ -149,12 +156,146 @@ require(['jquery', 'sakai/sakai.api.core', 'underscore',
         };
 
 
+
+        //////////////////////////
+        // Uploading a new file //
+        //////////////////////////
+
+        var constructItem = function() {
+            var contentObj = {
+                'sakai:pooled-content-file-name': 'Timgliderdataset',
+                'sakai:description': 'Dataset for timeglider',
+                'sakai:permissions': 'public',
+                'sakai:copyright': 'creative commons',
+                'sakai:originaltitle': '',
+                'sakai:tags': '',
+                'sakai:fileextension': 'json',
+                'css_class': sakai.config.MimeTypes[sakai.config.Extensions['json'] || 'other'].cssClass || 'icon-unknown-sprite',
+                'type': 'content',
+                'origin':'user' // 'origin' tells Sakai that this file was selected from the users hard drive
+            };
+            uploadContent(contentObj);
+        };
+
+
+        /////////////////////////
+        // Uploading new files //
+        /////////////////////////
+
+        /**
+         * Execute the multifile upload
+         */
+        var uploadContent = function(contentObj) {
+            $uploadForm.attr('action', uploadPath);
+            $uploadForm.ajaxForm({
+                dataType: 'json',
+                data: {'_charset_': 'utf8'},
+                success: function(data) {
+                    var extractedData = [];
+                    for (var i in data) {
+                        if (data.hasOwnProperty(i)) {
+                            contentObj = $.extend({}, data[i].item, contentObj);
+                            setDataOnContent(contentObj);
+                        }
+                    }
+                },
+                error: function() {
+                    checkUploadCompleted();
+                }
+            });
+            $uploadForm.submit();
+        };
+
+
+
+        //////////////////////////////
+        // General metadata setting //
+        //////////////////////////////
+
+        /**
+         * Set extra data (title, description,...) on a piece of uploaded content
+         * @param {Object} data Contains ID's returned from the server to construct the POST URL and title with
+         */
+        var setDataOnContent = function(contentObj) {
+            var batchRequests = [];
+            batchRequests.push({
+                'url': '/p/' + contentObj['_path'],
+                'method': 'POST',
+                'parameters': {
+                    'sakai:pooled-content-file-name': contentObj['sakai:pooled-content-file-name'],
+                    'sakai:description': contentObj['sakai:description'],
+                    'sakai:permissions': contentObj['sakai:permissions'],
+                    'sakai:copyright': contentObj['sakai:copyright'],
+                    'sakai:allowcomments': 'false',
+                    'sakai:showcomments': 'false',
+                    'sakai:fileextension': contentObj['sakai:fileextension']
+                }
+            });
+
+/*****
+            // Add this content to the selected library
+            if(libraryToUploadTo !== sakai.data.me.user.userid) {
+                batchRequests.push({
+                    url: '/p/' + contentObj['_path'] + '.members.json',
+                    parameters: {
+                        ':viewer': libraryToUploadTo
+                    },
+                    method: 'POST'
+                });
+                // Add the selected library as a viewer to the cached results
+                contentObj['sakai:pooled-content-viewer'] = contentObj['sakai:pooled-content-viewer'] || [];
+                contentObj['sakai:pooled-content-viewer'].push(libraryToUploadTo);
+                // If we are in the context of the group, make the group managers a manager of the
+                // content as well
+                if (sakai_global.group && sakai_global.group.groupData && sakai_global.group.groupData['sakai:group-id'] === libraryToUploadTo) {
+                    // We only do this if the system is configured to support this
+                    if (sakai.config.Permissions.Groups.addcontentmanagers) {
+                        var roles = sakai.api.Groups.getRoles(sakai_global.group.groupData);
+                        for (var role in roles) {
+                            if (roles.hasOwnProperty(role) && roles[role].isManagerRole) {
+                                batchRequests.push({
+                                    url: '/p/' + contentObj['_path'] + '.members.json',
+                                    parameters: {
+                                        ':manager': libraryToUploadTo + '-' + roles[role].id
+                                    },
+                                    method: 'POST'
+                                });
+                            }
+                        }
+                    }
+                }
+            }
+*****/
+            // Set initial version
+            if (contentObj['_mimeType'] !== 'x-sakai/document') {
+                batchRequests.push({
+                    'url': '/p/' + contentObj['_path'] + '.save.json',
+                    'method': 'POST'
+                });
+            }
+
+            sakai.api.Server.batch(batchRequests, function(success, response) {
+                // Tag the content
+                sakai.api.Util.tagEntity('/p/' + (contentObj['_path']), contentObj['sakai:tags'], false, function() {
+                    // Set the correct file permissions
+                    sakai.api.Content.setFilePermissions([{'hashpath': contentObj['_path'], 'permissions': contentObj['sakai:permissions']}], function() {
+//                        lastUpload.push(contentObj);
+//                        checkUploadCompleted(true);
+                    });
+                });
+            });
+            $fileURL.val('/p/' + contentObj['_path']);
+
+        };
+
+
         ////////////////////
         // Event Handlers //
         ////////////////////
 
         $settingsForm.on('submit', function(ev) {
             // get the selected input
+            constructItem();
             var fileURL = $fileURL.val();
             var minZoom = $zoomRange.slider('values', 0);
             var maxZoom = $zoomRange.slider('values', 1);
@@ -178,6 +319,9 @@ require(['jquery', 'sakai/sakai.api.core', 'underscore',
             sakai.api.Widgets.Container.informCancel(tuid, 'timeglider');
         });
 
+        $uploadButton.on('click', function() {
+            constructItem();
+        });
 
         /////////////////////////////
         // Initialization function //

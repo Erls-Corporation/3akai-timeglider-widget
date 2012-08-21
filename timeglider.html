@@ -11,7 +11,13 @@
     </div>
     <!-- SETTINGS VIEW -->
     <div id="timeglider_settings" style="display:none;">
+        <label for="multifile_upload">__MSG__UPLOAD_A_FILE__:</label>
+        <form id="timeglider_upload_form" class="newaddcontent_form" method="POST" enctype="multipart/form-data">
+            <input name="fileData" id="timeglider_upload" type="file" size="42"/>
+        </form>
+        <button id="timeglider_upload_btn" class="s3d-button s3d-overlay-button">__MSG__UPLOAD_FILE__</button>
         <form id="timeglider_settings_form" action="#">
+
             <p>
                 __MSG__TIMELINE_URL__: <input id="timeglider_file_url" name="timeglider_file_url" />
             </p>

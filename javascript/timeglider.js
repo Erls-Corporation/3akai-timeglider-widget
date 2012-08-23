@@ -295,7 +295,6 @@ require(['jquery', 'sakai/sakai.api.core', 'underscore',
 
         $settingsForm.on('submit', function(ev) {
             // get the selected input
-            constructItem();
             var fileURL = $fileURL.val();
             var minZoom = $zoomRange.slider('values', 0);
             var maxZoom = $zoomRange.slider('values', 1);
